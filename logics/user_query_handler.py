@@ -9,7 +9,8 @@ from googleapiclient.http import MediaIoBaseDownload
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-load_dotenv('.env')
+if os.getenv("RENDER") != "true":  # or use any env var that Render sets
+    load_dotenv('.env')
 
 # Pass the API Key to the OpenAI Client and Exa.ai
 openai_api_key = os.getenv('OPENAI_API_KEY')
