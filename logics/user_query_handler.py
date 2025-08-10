@@ -4,13 +4,33 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
 import time
-import re
+import io
+from googleapiclient.http import MediaIoBaseDownload
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 
 load_dotenv('.env')
 
 # Pass the API Key to the OpenAI Client and Exa.ai
 openai_api_key = os.getenv('OPENAI_API_KEY')
 Exa_api_key=(os.getenv("EXA_API_KEY"))
+
+# Reconstruct the credentials dictionary
+service_account_info = {
+    "type": os.getenv("GCP_TYPE"),
+    "project_id": os.getenv("GCP_PROJECT_ID"),
+    "private_key_id": os.getenv("GCP_PRIVATE_KEY_ID"),
+    "private_key": os.getenv("GCP_PRIVATE_KEY").replace('\\n', '\n'),
+    "client_email": os.getenv("GCP_CLIENT_EMAIL"),
+    "client_id": os.getenv("GCP_CLIENT_ID"),
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": f"https://www.googleapis.com/robot/v1/metadata/x509/{os.getenv('GCP_CLIENT_EMAIL')}"
+}
+
+# Create credentials object
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 # Import the key CrewAI classes
 from crewai import Agent, Task, Crew
@@ -24,10 +44,42 @@ from content.driver import download_drive_files, build_rag_tool_from_files
 #this is the google drive - https://drive.google.com/drive/folders/13BJY5qfprzXXK_MGnN06Jz_KWnJqOZZz
 #this is the json file downloaded from google cloud
 FOLDER_ID = "1B8fvzo_LiLbXDp3Y2vq8yWHOOH_V-BD-"
-SERVICE_ACCOUNT_PATH = "ai-bootcamp-lcj.json"
 
 # Step 1: Download files
-downloaded_files = download_drive_files(FOLDER_ID, SERVICE_ACCOUNT_PATH)
+def download_drive_files(folder_id, credentials, download_path='./downloads'):
+    drive_service = build('drive', 'v3', credentials=credentials)
+
+    # Create folder if it doesn't exist
+    os.makedirs(download_path, exist_ok=True)
+
+    # List files in the folder
+    results = drive_service.files().list(
+        q=f"'{folder_id}' in parents and trashed = false",
+        fields="files(id, name)"
+    ).execute()
+
+    files = results.get('files', [])
+    downloaded_file_paths = []
+
+    for file in files:
+        file_id = file['id']
+        file_name = file['name']
+        local_path = os.path.join(download_path, file_name)
+
+        request = drive_service.files().get_media(fileId=file_id)
+        fh = io.FileIO(local_path, 'wb')
+        downloader = MediaIoBaseDownload(fh, request)
+
+        done = False
+        while not done:
+            status, done = downloader.next_chunk()
+            print(f"Downloading {file_name}: {int(status.progress() * 100)}%")
+
+        downloaded_file_paths.append(local_path)
+
+    return downloaded_file_paths
+
+downloaded_files = download_drive_files(FOLDER_ID, credentials)
 
 # Step 2: Create RAG tool and Exa search tool
 rag_tool = build_rag_tool_from_files(downloaded_files)
