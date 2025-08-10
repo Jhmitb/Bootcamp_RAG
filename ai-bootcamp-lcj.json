@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ai-bootcamp-lcj",
+  "private_key_id": "32c0ded38658616f43277057f942c161bccde8ba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCSMlyAiZXBQ9Z\nCUYuVds1xJ4gh0N2dVYhvwLc9jJ9GKhmyJMlHx3dVR3Rg4vpBfU5y4RQFlKEgpm8\nWV0kMzUhAb4JXA6RDDJGUtZ3yX/+J9BPBAtAsYJ40HJPpF8XDYDEk7YX+Z0ARDN2\nKF5VFekCzK+IEMgC+aF7jKUZWPMMcFb0pz+UQH575xcneAaLaxtMzzlPafbE6h8o\ngiBi/5wEE1N8MT3X2ZAe7/+yBE2Yl00QW1BwFVzGtXUUbaBHs/e98K2YmjYNP3EM\nuRI4iFrSaFFwhAkXt6o7nLqImViwbbZnC52024SXqcHF7+ISDhZdzmQfBLIoCxvB\nlEli7YPDAgMBAAECgf9L4cRC8gRlKniriS8VIhXKSyNrJuAvc9B4H0tAi5cA8+6T\nuaQWetV9TwLctd7f1o/6Y5iq2shsddqu0gaFnQogFXhGNdCy3Ipiaf6YnvJVZ/kK\nNL82oW9XSfnYnkSrCl/HFlqhxCRSuv9eh709nX/3e9teFHSHJVaMLHI2d1iPhZw/\nReoOQwfX17dA+VqYxL+SQkitYK8B37OFIbNP7k1nGpbsKN4wNHxuRJxyC0JwlFrP\nFDxP4eLzDF/HGIy05G6KkatGOpG6nLoGxlWv6ZzFJCYrS6z/07MwUGFP4+9FikAS\nvf75QiXnmiXv3zKvouNG9J9OsANxwaNw2OmHeNECgYEA7hhx0yKvSRI+zSMtyAXV\nfFAC9yDN05yw/bW4RbD3gKOgVLlBT76IUcokk2dcy0Ur2GNFiGc9DYhRcA9ANxga\njTFYW1tvhS8MPTVJXNt5JsZb2fK+iTzZy9w6sjxjUg2tqaHZsTKlr4mJYybBkQAv\nECylfqsn5k5kL1003WD7t7MCgYEA0OTv+br1ns29hq/ALhK+a7EQElLyM5gS+PlC\nD8M+NGAgldiXuuBF3nC2pWIcojcbPQp0zg75lbVUvB87X2NMMKTSe4rktsig4PaX\n95+Oc7ZQ3YvesBbW9Sgc+jyX/1oQjMbmf5xxODVzobbT/EZoP7VavIBWzrJ+duyy\n8iWd+7ECgYEAwqUXQL1FQV56GugcgD5MthEPK4sU2V9qzi7mE4tF+1NJOposi42/\nEeZImnzQvpiw7HjTmlyT6+E6enrtS10YL79cdWs9s0qwHcXXUONXmtxksLujCrzF\nbMSA878sjyMBiwD238cA7o1o1LcVXX4h+34UWYaA2uXRP2taUXT8s8MCgYA7Nnnz\nrxRKtIUhtZXjOXryqdklaI+xIk1Wd8lLEIwEaq8x6phv53zGpeqQDLSTIs28ysb7\nVfFXh3QCc1PwIQSK0V28mU1lpo871YqULY1CrY5Ujn5MKd061ukH4b8wKcaBMSxL\nRfwt87DYSSvj2c1ZKb4Tqslwg9YnPccnrpQOsQKBgQC8UInkF0uC0M0MbLi0ycMK\nGuJuTapwNEnJH47fuAgB3XpnHKRkcUyBm4OFS7rfTl2cKRMd+X4hqi6ogdQ7NuUp\nRJQdvu0YrLqTsYyTwS66YHB9jh2j26nEl4lnSOM/9QQqpx2XEl3YW5UkkiTehpdq\n8lrQ6hihC8i6uzlo5hZbPA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ai-bootcamp-lcj@ai-bootcamp-lcj.iam.gserviceaccount.com",
+  "client_id": "107109680201942996041",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ai-bootcamp-lcj%40ai-bootcamp-lcj.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

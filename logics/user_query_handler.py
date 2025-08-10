@@ -24,7 +24,7 @@ from content.driver import download_drive_files, build_rag_tool_from_files
 #this is the google drive - https://drive.google.com/drive/folders/13BJY5qfprzXXK_MGnN06Jz_KWnJqOZZz
 #this is the json file downloaded from google cloud
 FOLDER_ID = "1B8fvzo_LiLbXDp3Y2vq8yWHOOH_V-BD-"
-SERVICE_ACCOUNT_PATH = "AI_project.json"
+SERVICE_ACCOUNT_PATH = "ai-bootcamp-lcj.json"
 
 # Step 1: Download files
 downloaded_files = download_drive_files(FOLDER_ID, SERVICE_ACCOUNT_PATH)
