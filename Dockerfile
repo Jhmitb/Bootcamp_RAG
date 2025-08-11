@@ -14,5 +14,5 @@ RUN pip install --upgrade pip setuptools wheel \
 # Copy all app files to the container
 COPY . .
 
-# Run welcome.py when the container starts
-CMD ["streamlit", "run", "main.py", "--server.port=8000", "--server.address=0.0.0.0", "--server.enableCORS=false"]
+# Run pages/main.py when the container starts
+CMD ["streamlit", "run", "pages/main.py", "--server.port=8000", "--server.address=0.0.0.0", "--server.enableCORS=false"]
