@@ -15,4 +15,4 @@ RUN pip install --upgrade pip setuptools wheel \
 COPY . .
 
 # Run welcome.py when the container starts
-CMD ["python", "welcome.py"]
+CMD ["streamlit", "run", "welcome.py", "--server.port=8000", "--server.enableCORS=false"]
