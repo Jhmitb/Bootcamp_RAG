@@ -1,14 +1,13 @@
 import os
 import io
 import concurrent.futures
+import threading
+import pdfplumber
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from googleapiclient.http import MediaIoBaseDownload
-from pypdf import PdfReader
-from pypdf.errors import PdfReadError
 from docx import Document
 from crewai_tools import RagTool
-import threading
 
 
 def download_drive_files(folder_id, service_account_path, output_dir="downloaded_files"):
@@ -65,12 +64,9 @@ def download_drive_files(folder_id, service_account_path, output_dir="downloaded
 def extract_text_from_file(file_path):
     if file_path.endswith(".pdf"):
         try:
-            reader = PdfReader(file_path)
-            if reader.is_encrypted:
-                print(f"[WARN] Skipping encrypted PDF: {file_path}")
-                return ""
-            return "\n".join([page.extract_text() or "" for page in reader.pages])
-        except PdfReadError as e:
+            with pdfplumber.open(file_path) as pdf:
+                return "\n".join(page.extract_text() or "" for page in pdf.pages)
+        except Exception as e:
             print(f"[ERROR] Could not read PDF: {file_path} — {e}")
             return ""
         
