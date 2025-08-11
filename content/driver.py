@@ -4,8 +4,8 @@ import concurrent.futures
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from googleapiclient.http import MediaIoBaseDownload
-from PyPDF2 import PdfReader
-from PyPDF2.errors import PdfReadError
+from pypdf import PdfReader
+from pypdf.errors import PdfReadError
 from docx import Document
 from crewai_tools import RagTool
 import threading
